@@ -1,0 +1,149 @@
+.img-thumbnail {
+  display: none;
+}
+
+.img-container img {
+  aspect-ratio: 4/3.5;
+}
+
+.img-container {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.arrows {
+  position: absolute;
+  inset: 0;
+  z-index: 99;
+}
+
+.arrows > * {
+  width: 30px;
+  height: 100%;
+  margin-inline: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left-arrow {
+  float: left;
+}
+
+.right-arrow {
+  float: right;
+}
+
+.l-arrow,
+.r-arrow {
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transform: translateY(50%);
+}
+
+.l-arrow {
+  background: url(../images/icon-previous.svg) no-repeat center var(--White);
+  background-size: 9px;
+}
+
+.r-arrow {
+  background: url(../images/icon-next.svg) no-repeat center var(--White);
+  background-size: 9px;
+}
+
+.disable {
+  filter: invert(0.2) brightness(200%);
+}
+
+.main-img {
+  position: absolute;
+  top: 0;
+  display: flex;
+}
+
+.main-img img {
+  width: 100%;
+  transform: translateX(var(--final));
+  transition: all 0.5s ease-in-out;
+}
+
+@media (min-width: 1024px) {
+  .arrows {
+    display: none;
+  }
+
+  .img-container {
+    border-radius: 0.75rem;
+    max-width: 475px;
+    width: 80%;
+    margin-left: auto;
+  }
+
+  .img-thumbnail {
+    margin-left: auto;
+    margin-top: 1.5rem;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 1rem;
+  }
+
+  .img-thumbnail img {
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  .img-thumbnail img:hover {
+    opacity: 0.8;
+  }
+
+  .arrows {
+    z-index: 9;
+  }
+
+  .active {
+    outline: 3px solid var(--Orange);
+    opacity: 0.8;
+  }
+
+  .arrows {
+    display: none;
+  }
+
+  .main-img {
+    cursor: pointer;
+  }
+
+  /* image overlay */
+
+  [data-desktopoverlay="true"] {
+    cursor: pointer;
+    position: absolute;
+    background-color: var(--VeryDarkBlue);
+    opacity: 0.6;
+    inset: 0;
+    z-index: 999;
+  }
+
+  [data-desktopoverlaycontainer="true"] {
+    position: absolute;
+    max-width: 35%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
+
+  [data-desktopoverlaythumbnail="true"] {
+    position: absolute;
+    width: 350px;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+  }
+}
